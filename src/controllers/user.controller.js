@@ -7,7 +7,7 @@ import { ApiResponse } from "../utils/ApiResponse.js"
 const registerUser = asyncHandler(async (req, res) => {
     // get user details from frontend
     const { username, fullName, email, password } = req.body;
-    console.log("email:", email, "fullName:", fullName,);
+    console.log();
 
     // Validation - check if any field is empty
 
@@ -28,6 +28,7 @@ const registerUser = asyncHandler(async (req, res) => {
     if (existedUserByEmail) {
         throw new ApiError(409, "This email already exists");
     }
+    console.log(req.files);
 
     // check for images, check for avatar
     const avatarLocalPath = req.files?.avatar[0]?.path;
